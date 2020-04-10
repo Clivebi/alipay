@@ -456,6 +456,8 @@ func signWithPKCS1v15(param url.Values, privateKey *rsa.PrivateKey, hash crypto.
 		var value = strings.TrimSpace(param.Get(key))
 		if len(value) > 0 {
 			pList = append(pList, key+"="+value)
+		} else {
+			param.Del(key)
 		}
 	}
 	sort.Strings(pList)
